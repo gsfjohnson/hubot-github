@@ -52,7 +52,7 @@ module.exports = (robot) ->
     admins = []
   org.init()
 
-  robot.respond /gho$/i, (msg) ->
+  robot.respond /gho org$/i, (msg) ->
     org.summary robot, msg
 
   robot.respond /gho list (teams|members|repos)/i, (msg) ->
@@ -93,6 +93,7 @@ module.exports = (robot) ->
         {
           fields: [
             { "title": "gho help", "value": "This helpful response!", "short": true }
+            ,{ "title": "gho org", "value": "Summary of the github organization.", "short": true }
             ,{ "title": "gho list (teams|members|repos)", "value": "List teams, members, or repos.", "short": true }
             ,{ "title": "gho list public repos", "value": "List public repos.", "short": true }
             ,{ "title": "gho create team <name>", "value": "Creates a team with <name>.", "short": true }
