@@ -44,7 +44,7 @@ Then add **hubot-github** to your `external-scripts.json`:
 ```
 HUBOT_GITHUB_KEY   - Github Application Key (personal access token)
 HUBOT_GITHUB_ORG  - Github Organization Name (the one in the url)
-HUBOT_SLACK_ADMIN - Slack Admins who can use certain admin commands
+HUBOT_AUTH_ADMIN - Admins who can use certain administrative commands
 ```
 
 

@@ -36,8 +36,8 @@ isAdmin = (user) ->
 ensureConfig = (out) ->
   out "Error: Github App Key is not specified" if not process.env.HUBOT_GITHUB_KEY
   out "Error: Github organization name is not specified" if not process.env.HUBOT_GITHUB_ORG
-  out "Error: Slack Admin userid is not specified" if not process.env.HUBOT_SLACK_ADMIN
-  return false unless (process.env.HUBOT_GITHUB_KEY and process.env.HUBOT_GITHUB_ORG and process.env.HUBOT_SLACK_ADMIN)
+  out "Error: Slack Admin userid is not specified" if not process.env.HUBOT_AUTH_ADMIN
+  return false unless (process.env.HUBOT_GITHUB_KEY and process.env.HUBOT_GITHUB_ORG and process.env.HUBOT_AUTH_ADMIN)
   true
 
 
@@ -53,7 +53,10 @@ ensureConfig = (out) ->
 module.exports = (robot) ->
 
   ensureConfig console.log
-  admins = process.env.HUBOT_SLACK_ADMIN.split ','
+  if process.env.HUBOT_AUTH_ADMIN?
+    admins = process.env.HUBOT_AUTH_ADMIN.split ','
+  else
+    admins = []
   org.init()
 
   robot.respond /gho$/i, (msg) ->
