@@ -3,8 +3,9 @@ _ = require 'lodash'
 
 organization = process.env.HUBOT_GITHUB_ORG
 ghApiHost = if process.env.HUBOT_GITHUB_API_HOST then process.env.HUBOT_GITHUB_API_HOST else "api.github.com"
+ghPathPrefix = if process.env.HUBOT_GITHUB_PATH_PREFIX then process.env.HUBOT_GITHUB_PATH_PREFIX else ""
 
-github = new GitHubAPI version: "3.0.0", debug: true, host: ghApiHost, headers: Accept: "application/vnd.github.moondragon+json"
+github = new GitHubAPI version: "3.0.0", debug: true, host: ghApiHost, pathPrefix: ghPathPrefix, headers: Accept: "application/vnd.github.moondragon+json"
 
 org = {
 
