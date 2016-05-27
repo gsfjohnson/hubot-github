@@ -91,3 +91,6 @@ module.exports = (robot) ->
       msg.reply "Only admins can use the `delete` commands"
     else
       org.delete[msg.match[1]] msg, msg.match[2]
+
+  robot.respond /gho help$/, (msg) ->
+    msg.reply "initial help"
