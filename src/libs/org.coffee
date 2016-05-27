@@ -56,13 +56,13 @@ org = {
         out = []
         out.push "There was an error fetching the memebers for the organization: #{organization}" if err
         out.push "`#{user.login}`" for user in res unless err and res.length == 0
-        msg.send out.join "\n"
+        msg.send out.join ", "
 
     repos: (msg, repoType="all") ->
       github.repos.getFromOrg org: organization, type: repoType, per_page: 100, (err, res) ->
         out = []
         out.push "There was an error fetching all the repos for the organization: #{organization}" if err
-        out.push "`#{repo.name}`" + if repo.description.length then repo.description else "" for repo in res unless err and res.length == 0
+        out.push "`#{repo.name}` - #{repo.description}" for repo in res unless err and res.length == 0
         msg.send out.join "\n"
   }
 

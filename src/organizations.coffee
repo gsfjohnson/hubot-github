@@ -88,7 +88,7 @@ module.exports = (robot) ->
   robot.respond /gho help$/, (msg) ->
     robot.adapter.customMessage {
       channel: msg.message.user.name,
-      text: "hubot-github commands",
+      text: "github organizational commands",
       attachments: [
         {
           fields: [
@@ -100,7 +100,6 @@ module.exports = (robot) ->
             ,{ "title": "gho create repo <repo>/(public|private)", "value": "Create a repo with <repo> and type (public or private).", "short": false }
             ,{ "title": "gho add (members|repos) <members|repos> to team <team>", "value": "Adds a comma separated list of members or repos to <team>.", "short": false }
             ,{ "title": "gho remove (repos|members) <members|repos> from team <team>", "value": "Remove given repos or members from the given team.", "short": false }
-#   hubot gho remove (repos|members) <members|repos> from team <team name> - removes the repos or members from the given team
           ]
         }
       ]
