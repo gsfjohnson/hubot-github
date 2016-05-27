@@ -95,13 +95,13 @@ module.exports = (robot) ->
   robot.respond /gho help$/, (msg) ->
     robot.adapter.customMessage {
       channel: msg.message.user.name,
-      text: "text",
+      text: "hubot-github commands",
       attachments: [
         {
-          pretext: "Pretext",
-          title: "Hubot-Github Commands",
           fields: [
-            { "title": "gho help", "value": "this", "short": true }
+            { "title": "gho help", "value": "This helpful response!", "short": true }
+            ,{ "title": "gho list (teams|members|repos)", "value": "List teams, members, or repos.", "short": true }
+            ,{ "title": "gho list (public) (repos)", "value": "List public repos.", "short": true }
           ]
         }
       ]

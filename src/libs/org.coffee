@@ -20,21 +20,26 @@ org = {
           if err or memberErr or teamErr
             msg.reply "There was an error getting the details of the organization: #{organization}"
           else
-            msg.send {
-              title: org.name, title_link: "https://#{ghApiHost}/#{organization}/",
-              fields: [
-                { title: "Location", value: org.location, short: true }
-                ,{ title: "Created", value: org.created_at, short: true }
-                ,{ title: "Public Repos", value: org.public_repos, short: true }
-                ,{ title: "Private Repos", value: org.total_private_repos, short: true }
-                ,{ title: "Total Repos", value: org.public_repos + org.total_private_repos, short: true }
-                ,{ title: "Members", value: members.length, short: true }
-                ,{ title: "Teams", value: teams.length, short: true }
-                ,{ title: "Collaborators", value: org.collaborators, short: true }
-                ,{ title: "Followers", value: org.followers, short: true }
-                ,{ title: "Following", value: org.following, short: true }
-                ,{ title: "Public Gists", value: org.private_gists, short: true }
-                ,{ title: "Private Gists", value: org.private_gists, short: true }
+            robot.adapter.customMessage {
+              channel: msg.message.room,
+              attachments: [
+                {
+                  title: org.name, title_link: "https://#{ghApiHost}/#{organization}/",
+                  fields: [
+                    { title: "Location", value: org.location, short: true }
+                    ,{ title: "Created", value: org.created_at, short: true }
+                    ,{ title: "Public Repos", value: org.public_repos, short: true }
+                    ,{ title: "Private Repos", value: org.total_private_repos, short: true }
+                    ,{ title: "Total Repos", value: org.public_repos + org.total_private_repos, short: true }
+                    ,{ title: "Members", value: members.length, short: true }
+                    ,{ title: "Teams", value: teams.length, short: true }
+                    ,{ title: "Collaborators", value: org.collaborators, short: true }
+                    ,{ title: "Followers", value: org.followers, short: true }
+                    ,{ title: "Following", value: org.following, short: true }
+                    ,{ title: "Public Gists", value: org.private_gists, short: true }
+                    ,{ title: "Private Gists", value: org.private_gists, short: true }
+                  ]
+                }
               ]
             }
 
