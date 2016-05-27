@@ -93,4 +93,14 @@ module.exports = (robot) ->
       org.delete[msg.match[1]] msg, msg.match[2]
 
   robot.respond /gho help$/, (msg) ->
-    msg.reply "initial help"
+    robot.send { room: msg.message.user.name }, {
+      attachments: [
+        {
+          pretext: "Hubot-Github Commands",
+          title: "Hubot-Github Commands",
+          fields: [
+            { title: "gho help", value: "this", short: true }
+          ]
+        }
+      ]
+    }
