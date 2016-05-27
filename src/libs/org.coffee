@@ -1,10 +1,10 @@
 GitHubAPI = require 'github'
 _ = require 'lodash'
 
-github = new GitHubAPI version: "3.0.0", debug: true, headers: Accept: "application/vnd.github.moondragon+json"
-
 organization = process.env.HUBOT_GITHUB_ORG
+ghApiHost = if process.env.HUBOT_GITHUB_API_HOST then process.env.HUBOT_GITHUB_API_HOST else "api.github.com"
 
+github = new GitHubAPI version: "3.0.0", debug: true, host: ghApiHost, headers: Accept: "application/vnd.github.moondragon+json"
 
 org = {
 
