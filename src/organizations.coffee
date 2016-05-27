@@ -11,7 +11,7 @@
 #   HUBOT_SLACK_ADMIN - Userid of slack admins who can use these commands
 #
 # Commands:
-#   hubot gho help - hubot-github help
+#   hubot gho help - github organizational commands
 #
 # Author:
 #   Ollie Jennings <ollie@olliejennings.co.uk>
@@ -95,10 +95,11 @@ module.exports = (robot) ->
             { "title": "gho help", "value": "This helpful response!", "short": true }
             ,{ "title": "gho list (teams|members|repos)", "value": "List teams, members, or repos.", "short": true }
             ,{ "title": "gho list public repos", "value": "List public repos.", "short": true }
-            ,{ "title": "gho create team _name_", "value": "Creates a team with _name_.", "short": true }
-            ,{ "title": "gho create repo _repoName/public|private_", "value": "Create a repo with _repoName_ and type (public, private).", "short": true }
-            ,{ "title": "gho add (members|repos) <members|repos> to team _teamName_", "value": "Adds a comma separated list of members or repos to _teamName_.", "short": true }
-            ,{ "title": "gho delete team _teamName_", "value": "Delete given team from organization.", "short": true }
+            ,{ "title": "gho create team <name>", "value": "Creates a team with <name>.", "short": true }
+            ,{ "title": "gho delete team <team>", "value": "Delete given team from organization.", "short": true }
+            ,{ "title": "gho create repo <repo>/(public|private)", "value": "Create a repo with <repo> and type (public or private).", "short": false }
+            ,{ "title": "gho add (members|repos) <members|repos> to team <team>", "value": "Adds a comma separated list of members or repos to <team>.", "short": false }
+            ,{ "title": "gho remove (repos|members) <members|repos> from team <team>", "value": "Remove given repos or members from the given team.", "short": false }
 #   hubot gho remove (repos|members) <members|repos> from team <team name> - removes the repos or members from the given team
           ]
         }
