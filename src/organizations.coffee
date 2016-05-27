@@ -11,14 +11,7 @@
 #   HUBOT_SLACK_ADMIN - Userid of slack admins who can use these commands
 #
 # Commands:
-#   hubot gho - returns a summary of your organization
-#   hubot gho list (teams|repos|members) - returns a list of members, teams or repos in your organization
-#   hubot gho list public repos - returns a list of all public repos in your organization
-#   hubot gho create team <team name> - creates a team with the following name
-#   hubot gho create repo <repo name>/<private|public> - creates a repo with the following name, description and type (private or public)
-#   hubot gho add (members|repos) <members|repos> to team <team name> - adds a comma separated list of members or repos to a given team
-#   hubot gho remove (repos|members) <members|repos> from team <team name> - removes the repos or members from the given team
-#   hubot gho delete team <team name> - deletes the given team from your organization
+#   hubot gho help - hubot-github help
 #
 # Author:
 #   Ollie Jennings <ollie@olliejennings.co.uk>
@@ -101,7 +94,12 @@ module.exports = (robot) ->
           fields: [
             { "title": "gho help", "value": "This helpful response!", "short": true }
             ,{ "title": "gho list (teams|members|repos)", "value": "List teams, members, or repos.", "short": true }
-            ,{ "title": "gho list (public) (repos)", "value": "List public repos.", "short": true }
+            ,{ "title": "gho list public repos", "value": "List public repos.", "short": true }
+            ,{ "title": "gho create team _name_", "value": "Creates a team with _name_.", "short": true }
+            ,{ "title": "gho create repo _repoName/public|private_", "value": "Create a repo with _repoName_ and type (public, private).", "short": true }
+            ,{ "title": "gho add (members|repos) <members|repos> to team _teamName_", "value": "Adds a comma separated list of members or repos to _teamName_.", "short": true }
+            ,{ "title": "gho delete team _teamName_", "value": "Delete given team from organization.", "short": true }
+#   hubot gho remove (repos|members) <members|repos> from team <team name> - removes the repos or members from the given team
           ]
         }
       ]

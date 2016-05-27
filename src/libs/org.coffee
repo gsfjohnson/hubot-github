@@ -48,21 +48,21 @@ org = {
       github.orgs.getTeams org: organization, per_page: 100, (err, res) ->
         out = []
         out.push "There was an error fetching the teams for the organization: #{organization}" if err
-        out.push " - #{team.name} - #{team.description}" for team in res unless err and res.length == 0
+        out.push "`#{team.name}` - #{team.description}" for team in res unless err and res.length == 0
         msg.send out.join "\n"
 
     members: (msg, teamName) ->
       github.orgs.getMembers org: organization, per_page: 100, (err, res) ->
         out = []
         out.push "There was an error fetching the memebers for the organization: #{organization}" if err
-        out.push "- #{user.login}" for user in res unless err and res.length == 0
+        out.push "`#{user.login}`" for user in res unless err and res.length == 0
         msg.send out.join "\n"
 
     repos: (msg, repoType="all") ->
       github.repos.getFromOrg org: organization, type: repoType, per_page: 100, (err, res) ->
         out = []
         out.push "There was an error fetching all the repos for the organization: #{organization}" if err
-        out.push " - #{repo.name} - #{repo.description}" for repo in res unless err and res.length == 0
+        out.push "`#{repo.name}`" + if repo.description.length then repo.description else "" for repo in res unless err and res.length == 0
         msg.send out.join "\n"
   }
 
