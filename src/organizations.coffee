@@ -60,7 +60,7 @@ module.exports = (robot) ->
   org.init()
 
   robot.respond /gho$/i, (msg) ->
-    org.summary msg
+    org.summary robot, msg
 
   robot.respond /gho list (teams|members|repos)/i, (msg) ->
     org.list[msg.match[1]] msg

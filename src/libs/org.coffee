@@ -13,7 +13,7 @@ org = {
     github.authenticate type: "oauth", token: process.env.HUBOT_GITHUB_KEY
 
 
-  summary: (msg) ->
+  summary: (robot, msg) ->
     github.orgs.get org: organization, per_page: 100, (err, org) ->
       github.orgs.getMembers org: organization, per_page: 100, (memberErr, members) ->
         github.orgs.getTeams org: organization, per_page: 100, (teamErr, teams) ->
@@ -46,18 +46,24 @@ org = {
   list: {
     teams: (msg) ->
       github.orgs.getTeams org: organization, per_page: 100, (err, res) ->
-        msg.reply "There was an error fetching the teams for the organization: #{organization}" if err
-        msg.send " - #{team.name} - #{team.description}" for team in res unless err and res.length == 0
+        out = []
+        out.push "There was an error fetching the teams for the organization: #{organization}" if err
+        out.push " - #{team.name} - #{team.description}" for team in res unless err and res.length == 0
+        msg.send out.join "\n"
 
     members: (msg, teamName) ->
       github.orgs.getMembers org: organization, per_page: 100, (err, res) ->
-        msg.reply "There was an error fetching the memebers for the organization:#{organization}" if err
-        msg.send "- #{user.login}" for user in res unless err and res.length == 0
+        out = []
+        out.push "There was an error fetching the memebers for the organization: #{organization}" if err
+        out.push "- #{user.login}" for user in res unless err and res.length == 0
+        msg.send out.join "\n"
 
     repos: (msg, repoType="all") ->
       github.repos.getFromOrg org: organization, type: repoType, per_page: 100, (err, res) ->
-        msg.reply "There was an error fetching all the repos for the organization: #{organization}" if err
-        msg.send " - #{repo.name} - #{repo.description}" for repo in res unless err and res.length == 0
+        out = []
+        out.push "There was an error fetching all the repos for the organization: #{organization}" if err
+        out.push " - #{repo.name} - #{repo.description}" for repo in res unless err and res.length == 0
+        msg.send out.join "\n"
   }
 
   create: {
